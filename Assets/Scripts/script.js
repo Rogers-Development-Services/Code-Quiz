@@ -3,6 +3,7 @@ const quizContainer = document.getElementById('quiz');
 const resultsContainer = getElementById('results');
 const startButton = getElementById('start');
 const questionContainer = getElementById('question');
+const optionContainer = getElementById('options');
 const submitButton = getElementById('submit');
 const timerContainer = getElementById('timer');
 
@@ -46,7 +47,7 @@ function setTime() {
 
 function askQuestion() {
 
-    var question1 = document.createElement('h1');
+    var question1 = questionContainer.createElement('h1');
     question1.innerText = "In JavaScript an array is considered an object?"
 
     var option1a = document.createElement('button');
