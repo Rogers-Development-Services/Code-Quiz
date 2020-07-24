@@ -1,9 +1,12 @@
+// Declaring Variables
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = getElementById('results');
 const startButton = getElementById('start');
+const questionContainer = getElementById('question');
 const submitButton = getElementById('submit');
 const timerContainer = getElementById('timer');
 
+// Here's what I think I need
 function buildQuiz (){};
 
 function showResults(){};
@@ -19,9 +22,9 @@ submitButton.addEventListener('click', showResults);
 
 // # setInterval/setTimeout
 // WHEN I click the start button
-// THEN a timer starts and I am presented with a question
+// THEN a timer starts 
 
-startButton.addEventListener('click', setTime());
+startButton.addEventListener('click', setTime(), askQuestion());
 
 var timeElapsed = 0;
 
@@ -39,7 +42,22 @@ function setTime() {
     }, 1000);
 }
 
-setTime();
+// and I am presented with a question
+
+function askQuestion() {
+
+    var question1 = document.createElement('h1');
+    question1.innerText = "In JavaScript an array is considered an object?"
+
+    var option1a = document.createElement('button');
+    var option1b = document.createElement('button');
+    
+    option1a.innerText = "True";
+    option1b.innerText = "False";
+
+    questionContainer.appendChild(option1a);
+    questionContainer.appendChild(option1b);
+}
 
 // function setTime() {
 //     var timerInterval = setInterval(function() {
