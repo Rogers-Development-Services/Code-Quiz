@@ -42,7 +42,7 @@ var questionArray = [
             "A keyward which refers to the object from where it was refrenced?"
         ],
         answers: 0
-    }
+    },
     {
         question: "Which symbol is used for comments in Javascript?",
         choices: [
@@ -52,7 +52,7 @@ var questionArray = [
             "/*"
         ],
         answers: 1
-    }
+    },
     {
         question: "What would be the result of 3 + 2 + \"7\"?",
         choices: [
@@ -60,7 +60,7 @@ var questionArray = [
             "57",
         ],
         answers: 1
-    }
+    },
     {
         question: "What is not an undefined value in JavaScript?",
         choices: [
@@ -70,7 +70,7 @@ var questionArray = [
             "A variable which does exisit which is not initialized"
         ],
         answers: 3
-    }
+    },
     {
         question: "What is an advantage of using \"innerHTML\" in JavaScript?",
         choices: [
@@ -83,7 +83,7 @@ var questionArray = [
 
         ],
         answers: 5
-    }
+    },
     {
         question: "Is JavaScript case sensitive?",
         choices: [
@@ -92,7 +92,7 @@ var questionArray = [
             "Depends",            
         ],
         answers: 0
-    }
+    },
     {
         question: "What will this alert return: \"alert(document.getElementById('checkbox1').checked);\"?",
         choices: [
@@ -102,7 +102,7 @@ var questionArray = [
             "unchecked"
         ],
         answers: 1
-    }
+    },
     {
         question: "____ is an operator which is used to return a string description of the type of a variable?",
         choices: [
@@ -115,21 +115,7 @@ var questionArray = [
     }
     
 ]
-
-// Options
-// Responses
-
-// Here's what I think I need
-function buildQuiz() { };
-
-function showResults() { };
-
-// Display the quiz right away
-buildQuiz();
-
-// on submit, show results
-submitButton.addEventListener('click', showResults);
-
+var answerArray;
 
 // GIVEN I am taking a code quiz
 
@@ -141,6 +127,7 @@ submitButton.addEventListener('click', showResults);
 startButton.addEventListener('click', initialize);
 
 var timeElapsed = 0;
+var timeLeft = 120;
 
 function initialize() {
     setTime();
@@ -152,7 +139,8 @@ function setTime() {
     var timerInterval = setInterval(function () {
 
         timeElapsed++;
-        timerContainer.textContent = "It has been " + timeElapsed + " seconds since your quiz has started";
+        timeLeft--;
+        timerContainer.textContent = "It has been " + timeElapsed + " seconds since your quiz has started, you have " + timeLeft + " remaining.";
 
         if (timeElapsed === 120) {
             clearInterval(timerInterval);
@@ -163,11 +151,6 @@ function setTime() {
 
 // and I am presented with a question
 
-function askQuestion() {
-
-    var question = document.createElement('h1');
-
-    question.innerText = questionArray[counter].question;
     
     // create a trigger once first quesions is answered which prompts the next question by event handler 'click', once i click on the choice i want to creat counter ++, this way it ques the next question.
     // generate all the questions and choices
@@ -176,21 +159,46 @@ function askQuestion() {
     // Hide and then display the second in CSS once different buttons are clicked
 
 
+function askQuestion() {
+
+    // Questions set up
+    var question = document.createElement('h2');
+
+    question.innerText = questionArray[counter].question;
+
     questionContainer.appendChild(question);
 
-    // var option1a = document.createElement('button');
-    // var option1b = document.createElement('button');
+    // Options set up
+    var optionAmount = questionArray[counter].choices.length;
+    // console.log(optionAmount);
 
-    // option1a.innerText = "True";
-    // option1b.innerText = "False";
+    for (i = 0; i < optionAmount; i++) {
 
-    // optionContainer.appendChild(option1a);
-    // optionContainer.appendChild(option1b);
+        var ithOption = document.createElement('button');
+
+        ithOption.innerText = questionArray[counter].choices[i];
+
+        optionContainer.append(ithOption);
+    }
+
 }
 
 // # event listeners
 // WHEN I answer a question
 // THEN I am presented with another question
+
+// questionArray[counter].answers.addEventListener('click')
+
+// optionContainer.ithOption.addEventListener('click', function{
+//     // prompt next question
+    
+// });
+
+document.addEventListener('click', fucntion (event) {
+    if (event.)
+});
+
+// set a event listener to listen to the buttons in the option divs to make the question change to the next
 
 // # event listeners + modifying remanining time
 // WHEN I answer a question incorrectly
