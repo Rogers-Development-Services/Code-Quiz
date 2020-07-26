@@ -4,11 +4,12 @@ const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const startButton = document.getElementById('start');
 const questionContainer = document.getElementById('question');
+const questionTitle = document.getElementById('question-title');
 const optionContainer = document.getElementById('options');
 const submitButton = document.getElementById('submit');
 const timerContainer = document.getElementById('timer');
 // this counts which question im refrencing in my array
-const counter = 0;
+let counter = 0;
 
 // Declaring Arrays
 
@@ -115,7 +116,18 @@ var questionArray = [
     }
     
 ]
-var answerArray;
+var answerArray = [];
+var correctArray = [2, 1, 0, ];
+correctAnswers = [];
+
+// if (answerArray[i] === correctArray[i]; correctArray++) {
+//     // compare the indexes of each array and tally correct answers
+//     // keep track of correct answers
+//     // let correctAnswer = [];
+//     if (correctArray[i] === correctArray[i] {
+//         correctAnswers++;
+//     }) 
+// }
 
 // GIVEN I am taking a code quiz
 
@@ -161,12 +173,13 @@ function setTime() {
 
 function askQuestion() {
 
-    // Questions set up
-    var question = document.createElement('h2');
+    // Questions set up and is displayed
+    // var question = questionTitle.innerHTML('h2');
 
-    question.innerText = questionArray[counter].question;
+    // question.innerText = questionArray[counter].question;
+    questionTitle.innerHTML = questionArray[counter].question;
 
-    questionContainer.appendChild(question);
+    // questionContainer.appendChild(question);
 
     // Options set up
     var optionAmount = questionArray[counter].choices.length;
@@ -194,9 +207,28 @@ function askQuestion() {
     
 // });
 
-document.addEventListener('click', fucntion (event) {
-    if (event.)
+// var addFunction = function(firstNum, secondNum) {
+//     return firstNum + secondNum;
+// }
+
+// addFunction(1,1)
+
+// CLICK STORES THE ANSWER
+optionContainer.addEventListener('click', function (event) {
+
+    // console.log(event.target.innerText);
+
+    answerArray.push(event.target.innerText);
+    console.log(answerArray);
+
+    counter++;
+
+    optionContainer.innerHTML = "";
+
+    askQuestion();
+
 });
+
 
 // set a event listener to listen to the buttons in the option divs to make the question change to the next
 
@@ -204,9 +236,13 @@ document.addEventListener('click', fucntion (event) {
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
 
+
+
 // # clearInterval/clearTimeout
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
+
+
 
 // # localStorage
 // WHEN the game is over
