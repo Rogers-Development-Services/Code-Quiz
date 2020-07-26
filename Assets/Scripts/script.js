@@ -116,9 +116,13 @@ var questionArray = [
     }
     
 ]
-var answerArray = [];
-var correctArray = [2, 1, 0, ];
-correctAnswers = [];
+// var correctOptionIndex = questionArray[counter].choices[questionArray[counter].answers];
+// console.log (correctOptionIndex);
+// console.log(questionArray[counter].choices[questionArray[counter].answers]);
+
+var selectedOptionArray = [];
+// var correctArray = [2, 1, 0, ];
+// correctAnswers = [];
 
 // if (answerArray[i] === correctArray[i]; correctArray++) {
 //     // compare the indexes of each array and tally correct answers
@@ -133,55 +137,54 @@ correctAnswers = [];
 
 // # setInterval/setTimeout
 // WHEN I click the start button
-// THEN a timer starts 
+// THEN a timer starts and am presented with a question
 
 // refrence funcion means name without () vs calling is name with ()
 startButton.addEventListener('click', initialize);
 
+function initialize() {
+
+    setTime();
+
+    askQuestion();
+
+}
+
+// Declaring Variables for setTime
+
 var timeElapsed = 0;
 var timeLeft = 120;
-
-function initialize() {
-    setTime();
-    askQuestion();
-}
+// var timePenalty = timeElapsed + 5;
+// var totalTime = timeLeft - timeElapsed;
 
 function setTime() {
     // console.log("start button is clicked");
+
     var timerInterval = setInterval(function () {
 
         timeElapsed++;
+
         timeLeft--;
+
         timerContainer.textContent = "It has been " + timeElapsed + " seconds since your quiz has started, you have " + timeLeft + " remaining.";
 
+        // stops timer after two min
         if (timeElapsed === 120) {
+
             clearInterval(timerInterval);
         }
 
     }, 1000);
 }
 
-// and I am presented with a question
-
-    
-    // create a trigger once first quesions is answered which prompts the next question by event handler 'click', once i click on the choice i want to creat counter ++, this way it ques the next question.
-    // generate all the questions and choices
-    // click handler brings you to the next question. 
-    // array for whichever choice they choose and then check the answer later
-    // Hide and then display the second in CSS once different buttons are clicked
-
-
 function askQuestion() {
 
-    // Questions set up and is displayed
-    // var question = questionTitle.innerHTML('h2');
+    // Questions are set up and is displayed
 
-    // question.innerText = questionArray[counter].question;
     questionTitle.innerHTML = questionArray[counter].question;
 
-    // questionContainer.appendChild(question);
+    // Options are set up and displayed depending on which question is presented
 
-    // Options set up
     var optionAmount = questionArray[counter].choices.length;
     // console.log(optionAmount);
 
@@ -200,43 +203,50 @@ function askQuestion() {
 // WHEN I answer a question
 // THEN I am presented with another question
 
-// questionArray[counter].answers.addEventListener('click')
-
-// optionContainer.ithOption.addEventListener('click', function{
-//     // prompt next question
-    
-// });
-
-// var addFunction = function(firstNum, secondNum) {
-//     return firstNum + secondNum;
-// }
-
-// addFunction(1,1)
-
-// CLICK STORES THE ANSWER
+// Click stores the users choice into the ansewr array and transitions to the next question
 optionContainer.addEventListener('click', function (event) {
 
-    // console.log(event.target.innerText);
+selectedOptionArray.push(event.target.innerText);
+console.log(event.target.innerText);
+console.log(selectedOptionArray);
+console.log(questionArray[counter].choices[questionArray[counter].answers]);
+// var chosenOption = selectedOptionArray[counter];
+// console.log(chosenOption);
 
-    answerArray.push(event.target.innerText);
-    console.log(answerArray);
+if ( selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
 
-    counter++;
+    timeElapsed = timeElapsed + 5;
 
-    optionContainer.innerHTML = "";
+}
 
-    askQuestion();
+counter++;
+
+console.log(selectedOptionArray);
+console.log(questionArray[counter].choices[questionArray[counter].answers]);
+
+optionContainer.innerHTML = "";
+
+askQuestion();
 
 });
-
-
-// set a event listener to listen to the buttons in the option divs to make the question change to the next
 
 // # event listeners + modifying remanining time
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
 
+    // var correctOption = questionArray[counter].choices[answers];
+   
+    // var chosenOption = selectedOptionArray[counter];
+    // console.log(chosenOption);
+    console.log(questionArray[counter].choices[questionArray[counter].answers]);
 
+    // var selectedOption = optionContainer.addEventListener('click', function (event) {
+
+    // if ( selectedOption !== correctOption ) {
+    //     // subtract 5s from the timer
+    //     setTime(-5);
+    //     }
+    // });
 
 // # clearInterval/clearTimeout
 // WHEN all questions are answered or the timer reaches 0
@@ -247,3 +257,13 @@ optionContainer.addEventListener('click', function (event) {
 // # localStorage
 // WHEN the game is over
 // THEN I can save my initials and score
+
+
+
+
+    
+    // create a trigger once first quesions is answered which prompts the next question by event handler 'click', once i click on the choice i want to creat counter ++, this way it ques the next question.
+    // generate all the questions and choices
+    // click handler brings you to the next question. 
+    // array for whichever choice they choose and then check the answer later
+    // Hide and then display the second in CSS once different buttons are clicked
