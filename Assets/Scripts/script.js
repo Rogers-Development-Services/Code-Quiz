@@ -1,7 +1,7 @@
 // Declaring Variables
 
 const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
+// const resultsContainer = document.getElementById('results');
 const startButton = document.getElementById('start');
 const questionContainer = document.getElementById('question');
 const questionTitle = document.getElementById('question-title');
@@ -10,6 +10,7 @@ const submitButton = document.getElementById('submit');
 const timerContainer = document.getElementById('timer');
 // this counts which question im refrencing in my array
 let counter = 0;
+let counterEnd = 10;
 
 // Declaring Arrays
 
@@ -90,7 +91,7 @@ var questionArray = [
         choices: [
             "Yes",
             "No",
-            "Depends",            
+            "Depends",
         ],
         answers: 0
     },
@@ -113,8 +114,13 @@ var questionArray = [
             "instanceof"
         ],
         answers: 2
+    },
+    {
+        question: "",
+        choices: "",
+        answers: ''
     }
-    
+
 ]
 // var correctOptionIndex = questionArray[counter].choices[questionArray[counter].answers];
 // console.log (correctOptionIndex);
@@ -145,7 +151,6 @@ startButton.addEventListener('click', initialize);
 
 function initialize() {
 
-    // startButton.innerHTML = "";
     hideButton();
 
     setTime();
@@ -154,7 +159,7 @@ function initialize() {
 
 }
 
-function hideButton () {
+function hideButton() {
 
     startButton.style.visibility = 'hidden';
 
@@ -221,35 +226,48 @@ function askQuestion() {
 // WHEN I answer a question
 // THEN I am presented with another question
 
-// Click stores the users choice into the ansewr array and transitions to the next question
+// CLICK stores the users choice into the selectedOptionsArray and transitions to the next question
 optionContainer.addEventListener('click', function (event) {
 
-selectedOptionArray.push(event.target.innerText);
-// console.log(event.target.innerText);
-// console.log(selectedOptionArray);
-// console.log(questionArray[counter].choices[questionArray[counter].answers]);
-// var chosenOption = selectedOptionArray[counter];
-// console.log(chosenOption);
+    selectedOptionArray.push(event.target.innerText);
+    // console.log(event.target.innerText);
+    // console.log(selectedOptionArray);
+    // console.log(questionArray[counter].choices[questionArray[counter].answers]);
+    // var chosenOption = selectedOptionArray[counter];
+    // console.log(chosenOption);
 
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
+    // WHEN I answer a question incorrectly
+    // THEN time is subtracted from the clock
 
-if ( selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
+    if (selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
 
-    timeElapsed = timeElapsed + 5;
+        timeElapsed = timeElapsed + 5;
 
-    timeLeft = timeLeft - 5;
+        timeLeft = timeLeft - 5;
 
-}
+    }
 
-counter++;
+    counter++;
 
-console.log(selectedOptionArray);
-console.log(questionArray[counter].choices[questionArray[counter].answers]);
+    if ( counter === 10 || timeLeft === 0) {
+        
+        // when all the questions are answered or the timer ends, display results 
+        var resultsContainer = document.createElement('div');
 
-optionContainer.innerHTML = "";
+        // resultsContainer.setAttribute("id","results");
 
-askQuestion();
+        resultsContainer.innerHTML = "Here are your results";
+
+        // document.resultsContainer.appendChild(resultsText);
+    
+    }
+
+    console.log(selectedOptionArray);
+    // console.log(questionArray[counter].choices[questionArray[counter].answers]);
+
+    optionContainer.innerHTML = "";
+
+    askQuestion();
 
 });
 
@@ -258,7 +276,7 @@ askQuestion();
 // THEN time is subtracted from the clock
 
     // var correctOption = questionArray[counter].choices[answers];
-   
+
     // var chosenOption = selectedOptionArray[counter];
     // console.log(chosenOption);
     // console.log(questionArray[counter].choices[questionArray[counter].answers]);
@@ -284,7 +302,7 @@ askQuestion();
 
 
 
-    
+
     // create a trigger once first quesions is answered which prompts the next question by event handler 'click', once i click on the choice i want to creat counter ++, this way it ques the next question.
     // generate all the questions and choices
     // click handler brings you to the next question. 
