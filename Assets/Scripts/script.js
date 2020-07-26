@@ -140,14 +140,32 @@ var selectedOptionArray = [];
 // THEN a timer starts and am presented with a question
 
 // refrence funcion means name without () vs calling is name with ()
+// Need to make this buton disappear after first click!!!
 startButton.addEventListener('click', initialize);
 
 function initialize() {
+
+    // startButton.innerHTML = "";
+    hideButton();
 
     setTime();
 
     askQuestion();
 
+}
+
+function hideButton () {
+
+    startButton.style.visibility = 'hidden';
+
+    // if ( startButton.style.display === "none" ) {
+
+    //     startButton.style.display === "block";
+
+    // } else {
+
+    //     startButton.style.display === "none";
+    // }
 }
 
 // Declaring Variables for setTime
@@ -207,15 +225,20 @@ function askQuestion() {
 optionContainer.addEventListener('click', function (event) {
 
 selectedOptionArray.push(event.target.innerText);
-console.log(event.target.innerText);
-console.log(selectedOptionArray);
-console.log(questionArray[counter].choices[questionArray[counter].answers]);
+// console.log(event.target.innerText);
+// console.log(selectedOptionArray);
+// console.log(questionArray[counter].choices[questionArray[counter].answers]);
 // var chosenOption = selectedOptionArray[counter];
 // console.log(chosenOption);
+
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
 
 if ( selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
 
     timeElapsed = timeElapsed + 5;
+
+    timeLeft = timeLeft - 5;
 
 }
 
@@ -238,7 +261,7 @@ askQuestion();
    
     // var chosenOption = selectedOptionArray[counter];
     // console.log(chosenOption);
-    console.log(questionArray[counter].choices[questionArray[counter].answers]);
+    // console.log(questionArray[counter].choices[questionArray[counter].answers]);
 
     // var selectedOption = optionContainer.addEventListener('click', function (event) {
 
