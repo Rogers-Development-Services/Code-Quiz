@@ -189,7 +189,7 @@ function setTime() {
 
         timeLeft--;
 
-        timerContainer.textContent = "It has been " + timeElapsed + " seconds since your quiz has started, you have " + timeLeft + " remaining.";
+        timerContainer.textContent = "It has been " + timeElapsed + " seconds since your quiz has started!";
 
         // stops timer after two min
         if (timeElapsed === 120) {
@@ -218,6 +218,22 @@ function askQuestion() {
         ithOption.innerText = questionArray[counter].choices[i];
 
         optionContainer.append(ithOption);
+    }
+
+    // when all the questions are answered or the timer ends, display results 
+    if ( counter === 10 || timeLeft === 0) {
+        
+        timeElapsed = 119;
+        timeLeft = 0;
+        
+        var resultsContainer = document.createElement('div');
+
+        resultsContainer.setAttribute("id","results");
+
+        resultsContainer.innerHTML = "Here are your results";
+
+        questionContainer.replaceWith(resultsContainer);
+    
     }
 
 }
@@ -249,18 +265,18 @@ optionContainer.addEventListener('click', function (event) {
 
     counter++;
 
-    if ( counter === 10 || timeLeft === 0) {
+    // if ( counter === 10 || timeLeft === 0) {
         
-        // when all the questions are answered or the timer ends, display results 
-        var resultsContainer = document.createElement('div');
+    //     // when all the questions are answered or the timer ends, display results 
+    //     var resultsContainer = document.createElement('div');
 
-        // resultsContainer.setAttribute("id","results");
+    //     // resultsContainer.setAttribute("id","results");
 
-        resultsContainer.innerHTML = "Here are your results";
+    //     resultsContainer.innerHTML = "Here are your results";
 
-        // document.resultsContainer.appendChild(resultsText);
+    //     // document.resultsContainer.appendChild(resultsText);
     
-    }
+    // }
 
     console.log(selectedOptionArray);
     // console.log(questionArray[counter].choices[questionArray[counter].answers]);
