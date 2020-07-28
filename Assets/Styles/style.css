@@ -1,4 +1,4 @@
-:root {
+/* :root {
     background-color: #ecf5ff;
     --grid-cols: 1;
     --grid-rows: 1;
@@ -101,17 +101,8 @@ h3 {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
-}
+} */
 
-#grid-container {
-    display: grid;
-    grid-gap: 1em;
-    grid-template-rows: repeat(var(--grid-rows), 1fr);
-    grid-template-columns: repeat(var(--grid-cols), 1fr);
+#msg {
+    visibility: hidden;
 }
-
-.grid-item {
-    padding: 1em;
-    border: 1px solid #ddd;
-    text-align: center;
-  }

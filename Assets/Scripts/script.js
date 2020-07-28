@@ -13,9 +13,9 @@ const timerContainer = document.getElementById('timer');
 // const finalScore = document.getElementById('finalScore');
 // const mostRecentScore = localStorage.getItem("mostRecentScore");
 
-    // this counts which question im refrencing in my array
-    let counter = 0;
-    let scoreCount = 10;
+// this counts which question im refrencing in my array
+let counter = 0;
+let scoreCount = 10;
 
 var resultsContainer = document.createElement('div');
 
@@ -170,8 +170,6 @@ function initialize() {
 
     askQuestion();
 
-    // recordScore ();
-
 }
 
 function hideButton() {
@@ -244,6 +242,8 @@ function askQuestion() {
         optionContainer.innerHTML = "";
 
         compareResults();
+
+        submitBtn.style.visibility = "visable";
     }
 
 }
@@ -252,62 +252,66 @@ function compareResults() {
 
     // Display to lists side by side, with question, correct answer, and selected answer
 
-        // Display answers
+    // Display answers
 
-        // Couldn't figure out how to call from orginal array...
-        
-        var displayChoices = selectedOptionArray.toString();
+    // Couldn't figure out how to call from orginal array...
 
-        var displayAnswers = [
-            questionArray[0].choices[questionArray[0].answers],
-            questionArray[1].choices[questionArray[1].answers],
-            questionArray[2].choices[questionArray[2].answers],
-            questionArray[3].choices[questionArray[3].answers],
-            questionArray[4].choices[questionArray[4].answers],
-            questionArray[5].choices[questionArray[5].answers],
-            questionArray[6].choices[questionArray[6].answers],
-            questionArray[7].choices[questionArray[7].answers],
-            questionArray[8].choices[questionArray[8].answers],
-            questionArray[9].choices[questionArray[9].answers]
-        ];
+    var displayChoices = selectedOptionArray.toString();
 
-        // if ( displayChoices === displayAnswers) {
-            
-        //     scoreCount++
+    for (j=0; j < 10; j++) {
 
-        // }
+        var displayAnswers = questionArray[j].choices[questionArray[j].answers].toString();
+    }
+    // [
+        // questionArray[0].choices[questionArray[0].answers],
+        // questionArray[1].choices[questionArray[1].answers],
+        // questionArray[2].choices[questionArray[2].answers],
+        // questionArray[3].choices[questionArray[3].answers],
+        // questionArray[4].choices[questionArray[4].answers],
+        // questionArray[5].choices[questionArray[5].answers],
+        // questionArray[6].choices[questionArray[6].answers],
+        // questionArray[7].choices[questionArray[7].answers],
+        // questionArray[8].choices[questionArray[8].answers],
+        // questionArray[9].choices[questionArray[9].answers]
+    // ];
 
-        // var displayAmount = questionArray[counter].choices.length;
+    // if ( displayChoices === displayAnswers) {
 
-        // for (j = 0; j < displayAmount; j++) {
+    //     scoreCount++
 
-        //     var jthAmount = document.createElement('ul');
-    
-        //     jthOption.innerText = questionArray[counter].choices[answers];
-    
-        //     optionContainer.append(ithOption);
-        // }
+    // }
 
-        resultsContainer.setAttribute("id", "results");
+    // var displayAmount = questionArray[counter].choices.length;
 
-        resultsContainer.innerHTML = "Here were your choices: " + "<br>" + displayChoices + "<br>" + "<br>" + "Here were the correct answeres: " + "<br>" + displayAnswers.toString() + "<br>" + "<br>" + "You got " + scoreCount + " out of 10 correct.";
+    // for (j = 0; j < displayAmount; j++) {
 
-        questionContainer.replaceWith(resultsContainer);
+    //     var jthAmount = document.createElement('ul');
+
+    //     jthOption.innerText = questionArray[counter].choices[answers];
+
+    //     optionContainer.append(ithOption);
+    // }
+
+    resultsContainer.setAttribute("id", "results");
+
+    resultsContainer.innerHTML = "Here were your choices: " + "<br>" + displayChoices + "<br>" + "<br>" + "Here were the correct answeres: " + "<br>" + displayAnswers.toString() + "<br>" + "<br>" + "You got " + scoreCount + " out of 10 correct.";
+
+    questionContainer.replaceWith(resultsContainer);
 
 
     // Tally how many of the selected answers match the correct answer, and display the user's sore #/10
 
-        
+
 
 
 
     // if (selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
 
-        // resultsContainer.setAttribute("id", "results");
+    // resultsContainer.setAttribute("id", "results");
 
-        // resultsContainer.innerHTML = "Here are your results:";
+    // resultsContainer.innerHTML = "Here are your results:";
 
-        // questionContainer.replaceWith(resultsContainer);
+    // questionContainer.replaceWith(resultsContainer);
     // }
 }
 
@@ -324,7 +328,7 @@ optionContainer.addEventListener('click', function (event) {
     // console.log(event.target.innerText);
     // console.log(selectedOptionArray);
     // console.log(questionArray[counter].choices[questionArray[counter].answers]);
-    
+
     // this doesn't work...
     // var chosenOption = selectedOptionArray[counter];
     // console.log(chosenOption);
@@ -345,7 +349,7 @@ optionContainer.addEventListener('click', function (event) {
     counter++;
 
     console.log(selectedOptionArray);
-    // console.log(questionArray[counter].choices[questionArray[counter].answers]);
+    // console.log(questionArray[0].choices[questionArray[0].answers]);
 
     optionContainer.innerHTML = "";
 
@@ -376,7 +380,7 @@ function renderLastScore() {
     userScoreSpan.textContent = score;
 }
 
-submitBtn.addEventListener('click', function(event) {
+submitBtn.addEventListener('click', function (event) {
     event.preventDefault();
 
     var initials = document.querySelector('#initials').value;
@@ -384,12 +388,12 @@ submitBtn.addEventListener('click', function(event) {
 
     if (initials === "") {
         displayMessage("error", "Initials can't be blank");
-    } else { 
+    } else {
         displayMessage("Sucess", "Score recorded");
 
-    localStorage.setItem("initials", initials);
-    localStorage.setItem("score-count", score);
-    renderLastScore();
+        localStorage.setItem("initials", initials);
+        localStorage.setItem("score-count", score);
+        renderLastScore();
     }
 })
 
