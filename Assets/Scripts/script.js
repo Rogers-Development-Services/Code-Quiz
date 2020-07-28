@@ -5,7 +5,7 @@ const startButton = document.getElementById('start');
 const questionContainer = document.getElementById('question');
 const questionTitle = document.getElementById('question-title');
 const optionContainer = document.getElementById('options');
-const submitButton = document.getElementById('submit');
+// const submitButton = document.getElementById('submit');
 const timerContainer = document.getElementById('timer');
 
 // const initials = document.getElementById("initials");
@@ -13,11 +13,17 @@ const timerContainer = document.getElementById('timer');
 // const finalScore = document.getElementById('finalScore');
 // const mostRecentScore = localStorage.getItem("mostRecentScore");
 
-// this counts which question im refrencing in my array
-let counter = 0;
-let scoreCount = 10;
+    // this counts which question im refrencing in my array
+    let counter = 0;
+    let scoreCount = 10;
 
 var resultsContainer = document.createElement('div');
+
+var initalsInput = document.querySelector("#initials");
+var submitBtn = document.querySelector("#submit");
+var msgDiv = document.querySelector('#msg');
+var userInitalsSpan = document.querySelector("#user-initials");
+var userScoreSpan = document.querySelector("#user-score");
 
 // Declaring Arrays
 
@@ -242,10 +248,6 @@ function askQuestion() {
 
 }
 
-// # localStorage
-// WHEN the game is over
-// THEN I can save my initials and score
-
 function compareResults() {
 
     // Display to lists side by side, with question, correct answer, and selected answer
@@ -322,6 +324,8 @@ optionContainer.addEventListener('click', function (event) {
     // console.log(event.target.innerText);
     // console.log(selectedOptionArray);
     // console.log(questionArray[counter].choices[questionArray[counter].answers]);
+    
+    // this doesn't work...
     // var chosenOption = selectedOptionArray[counter];
     // console.log(chosenOption);
 
@@ -348,6 +352,48 @@ optionContainer.addEventListener('click', function (event) {
     askQuestion();
 
 });
+
+// # localStorage
+// WHEN the game is over
+// THEN I can save my initials and score
+
+renderLastScore();
+
+function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
+}
+
+function renderLastScore() {
+    var initals = localStorage.getItem("initials");
+    var score = localStorage.getItem("score-count");
+
+    if (!initals) {
+        return;
+    }
+
+    userInitalsSpan.textContent = initals;
+    userScoreSpan.textContent = score;
+}
+
+submitBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    var initials = document.querySelector('#initials').value;
+    var score = document.querySelector("#score-count").value;
+
+    if (initials === "") {
+        displayMessage("error", "Initials can't be blank");
+    } else { 
+        displayMessage("Sucess", "Score recorded");
+
+    localStorage.setItem("initials", initials);
+    localStorage.setItem("score-count", score);
+    renderLastScore();
+    }
+})
+
+
 
 // # event listeners + modifying remanining time
 // WHEN I answer a question incorrectly
