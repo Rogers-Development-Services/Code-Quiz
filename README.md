@@ -45,3 +45,5 @@ You are required to submit the following for review:
 CREDIT
 
 For Questions about Javascript: https://www.guru99.com/javascript-interview-questions-answers.html
+
+Security Risks using innerHTML: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML

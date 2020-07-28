@@ -1,16 +1,23 @@
 // Declaring Variables
 
 const quizContainer = document.getElementById('quiz');
-// const resultsContainer = document.getElementById('results');
 const startButton = document.getElementById('start');
 const questionContainer = document.getElementById('question');
 const questionTitle = document.getElementById('question-title');
 const optionContainer = document.getElementById('options');
 const submitButton = document.getElementById('submit');
 const timerContainer = document.getElementById('timer');
+
+// const initials = document.getElementById("initials");
+// const saveScore = document.getElementById("saveScoreButton");
+// const finalScore = document.getElementById('finalScore');
+// const mostRecentScore = localStorage.getItem("mostRecentScore");
+
 // this counts which question im refrencing in my array
 let counter = 0;
-let counterEnd = 10;
+let scoreCount = 10;
+
+var resultsContainer = document.createElement('div');
 
 // Declaring Arrays
 
@@ -40,8 +47,8 @@ var questionArray = [
     {
         question: "What is \"this\" keyword in JavaScript?",
         choices: [
-            "A keyward which referes to the object from where it was called?",
-            "A keyward which refers to the object from where it was refrenced?"
+            "A keyward which referes to the object from where it was called",
+            "A keyward which refers to the object from where it was refrenced"
         ],
         answers: 0
     },
@@ -157,20 +164,14 @@ function initialize() {
 
     askQuestion();
 
+    // recordScore ();
+
 }
 
 function hideButton() {
 
     startButton.style.visibility = 'hidden';
 
-    // if ( startButton.style.display === "none" ) {
-
-    //     startButton.style.display === "block";
-
-    // } else {
-
-    //     startButton.style.display === "none";
-    // }
 }
 
 // Declaring Variables for setTime
@@ -195,6 +196,9 @@ function setTime() {
         if (timeElapsed === 120) {
 
             clearInterval(timerInterval);
+
+            // timerContainer.textContent = "Times UP!";
+            timerContainer.innerHTML = "";
         }
 
     }, 1000);
@@ -220,23 +224,92 @@ function askQuestion() {
         optionContainer.append(ithOption);
     }
 
+    // # clearInterval/clearTimeout
+    // WHEN all questions are answered or the timer reaches 0
+    // THEN the game is over
+
     // when all the questions are answered or the timer ends, display results 
-    if ( counter === 10 || timeLeft === 0) {
-        
+    if (counter === 10 || timeLeft === 0) {
+
         timeElapsed = 119;
         timeLeft = 0;
-        
-        var resultsContainer = document.createElement('div');
+        quizContainer.innerHTML = "";
+        questionContainer.innerHTML = "";
+        optionContainer.innerHTML = "";
 
-        resultsContainer.setAttribute("id","results");
-
-        resultsContainer.innerHTML = "Here are your results";
-
-        questionContainer.replaceWith(resultsContainer);
-    
+        compareResults();
     }
 
 }
+
+// # localStorage
+// WHEN the game is over
+// THEN I can save my initials and score
+
+function compareResults() {
+
+    // Display to lists side by side, with question, correct answer, and selected answer
+
+        // Display answers
+
+        // Couldn't figure out how to call from orginal array...
+        
+        var displayChoices = selectedOptionArray.toString();
+
+        var displayAnswers = [
+            questionArray[0].choices[questionArray[0].answers],
+            questionArray[1].choices[questionArray[1].answers],
+            questionArray[2].choices[questionArray[2].answers],
+            questionArray[3].choices[questionArray[3].answers],
+            questionArray[4].choices[questionArray[4].answers],
+            questionArray[5].choices[questionArray[5].answers],
+            questionArray[6].choices[questionArray[6].answers],
+            questionArray[7].choices[questionArray[7].answers],
+            questionArray[8].choices[questionArray[8].answers],
+            questionArray[9].choices[questionArray[9].answers]
+        ];
+
+        // if ( displayChoices === displayAnswers) {
+            
+        //     scoreCount++
+
+        // }
+
+        // var displayAmount = questionArray[counter].choices.length;
+
+        // for (j = 0; j < displayAmount; j++) {
+
+        //     var jthAmount = document.createElement('ul');
+    
+        //     jthOption.innerText = questionArray[counter].choices[answers];
+    
+        //     optionContainer.append(ithOption);
+        // }
+
+        resultsContainer.setAttribute("id", "results");
+
+        resultsContainer.innerHTML = "Here were your choices: " + "<br>" + displayChoices + "<br>" + "<br>" + "Here were the correct answeres: " + "<br>" + displayAnswers.toString() + "<br>" + "<br>" + "You got " + scoreCount + " out of 10 correct.";
+
+        questionContainer.replaceWith(resultsContainer);
+
+
+    // Tally how many of the selected answers match the correct answer, and display the user's sore #/10
+
+        
+
+
+
+    // if (selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
+
+        // resultsContainer.setAttribute("id", "results");
+
+        // resultsContainer.innerHTML = "Here are your results:";
+
+        // questionContainer.replaceWith(resultsContainer);
+    // }
+}
+
+// initials.innerText = mostRecentScore;
 
 // # event listeners
 // WHEN I answer a question
@@ -261,22 +334,11 @@ optionContainer.addEventListener('click', function (event) {
 
         timeLeft = timeLeft - 5;
 
+        scoreCount--;
+
     }
 
     counter++;
-
-    // if ( counter === 10 || timeLeft === 0) {
-        
-    //     // when all the questions are answered or the timer ends, display results 
-    //     var resultsContainer = document.createElement('div');
-
-    //     // resultsContainer.setAttribute("id","results");
-
-    //     resultsContainer.innerHTML = "Here are your results";
-
-    //     // document.resultsContainer.appendChild(resultsText);
-    
-    // }
 
     console.log(selectedOptionArray);
     // console.log(questionArray[counter].choices[questionArray[counter].answers]);
@@ -304,16 +366,6 @@ optionContainer.addEventListener('click', function (event) {
     //     setTime(-5);
     //     }
     // });
-
-// # clearInterval/clearTimeout
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-
-
-
-// # localStorage
-// WHEN the game is over
-// THEN I can save my initials and score
 
 
 
