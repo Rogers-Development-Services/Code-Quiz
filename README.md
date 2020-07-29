@@ -40,7 +40,7 @@ Thanks to Plover Brown, Steven Jirjis, and Elma Gonzalez for providing guidance.
 
 Guidance for ADA Compliance was verified using [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview)
 
-Application was verified using [Nu Html Checker](https://validator.w3.org/nu/?doc=https%3A%2F%2Frogers-development-services.github.io%2FPassword-Generator%2F) 
+Application was verified using [Nu Html Checker](https://validator.w3.org/nu/) 
 
 Inspiration and some questions were drawn from [Top 85 JavaScript Interview Questions & Answers](https://www.guru99.com/javascript-interview-questions-answers.html)
 
