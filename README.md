@@ -12,7 +12,7 @@ Here is an example of our site in action:
 
 ## Usage 
 
-Click the "Start" button and respond to the prompted buttons accordingly to select your answer to each question. Once you've received your score, please input your initials (i.e. MR for Matthew Rogers) and score provided into the two provided forms. To play again, refresh your current browser window.
+Click the "Start" button and respond to the prompted buttons accordingly to select your answer to each question. Once you've received your score, input your initials (i.e. MR for Matthew Rogers) and score into the two provided forms. To play again, refresh your current browser window.
 
 ## Future Updates
 
