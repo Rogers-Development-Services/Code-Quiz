@@ -1,6 +1,6 @@
 # Code Quiz
 
-This application will generate a 10 question javascript quiz and store the result from your quiz and compare your score to previous highscores.
+This application will generate a 10 question javascript quiz and store the result from your quiz and compare your score to previous highscores from yourself or other users.
 
 Click this link to access the [Deployed Application](https://rogers-development-services.github.io/Code-Quiz/)
 
@@ -8,11 +8,11 @@ Click this link to access the [Deployed Application](https://rogers-development-
 
 Here is an example of our site in action:
 
-![alt text](https://raw.githubusercontent.com/Rogers-Development-Services/Password-Generator/master/Assets/images/Deployed%20Application.JPG "Application Img1")
+![alt text](https://raw.githubusercontent.com/Rogers-Development-Services/Code-Quiz/master/Assets/Images/Deployed%20Application.JPG "Application Img1")
 
 ## Usage 
 
-Click the red "Start" button and respond to the prompted buttons  accordingly to select your answer to each question. Once you've received your score, please input your initials (i.e. MR for Matthew Rogers) and score provided into the two provided forms.
+Click the "Start" button and respond to the prompted buttons accordingly to select your answer to each question. Once you've received your score, please input your initials (i.e. MR for Matthew Rogers) and score provided into the two provided forms.
 
 ## Future Updates
 
