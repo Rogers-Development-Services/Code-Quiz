@@ -236,14 +236,16 @@ function askQuestion() {
     if (counter === 10 || timeLeft === 0) {
 
         timeElapsed = 119;
+
         timeLeft = 0;
+
         quizContainer.innerHTML = "";
+
         questionContainer.innerHTML = "";
+
         optionContainer.innerHTML = "";
 
         compareResults();
-
-        submitBtn.style.visibility = "visable";
     }
 
 }
@@ -256,23 +258,53 @@ function compareResults() {
 
     // Couldn't figure out how to call from orginal array...
 
-    var displayChoices = selectedOptionArray.toString();
+    var displayChoices = "";
 
-    for (j=0; j < 10; j++) {
+    var displayAnswers = "";
 
-        var displayAnswers = questionArray[j].choices[questionArray[j].answers].toString();
+    for (let j = 0; j < 10; j++) {
+        if (j === 3) {
+          if (selectedOptionArray[j] === "<!-- -->") {
+            var unicodeOption = "&lt;&#33;&#45;&#45; &#45;&#45;&gt;";
+            displayChoices += `<li>${unicodeOption.toString()}</li>`;
+          }
+        } else {
+          displayChoices += `<li>${selectedOptionArray[j]}</li>`;
+        }
+      }
+
+    // for (let i = 0; i < 10; i++) {
+
+    //     if (i == 3) {
+
+    //         if (selectedOptionArray[i] === "<!-- -->") {
+
+    //             var unicodeOption = "&lt;&#33;&#45;&#45; &#45;&#45;&gt;";
+
+    //             displayChoices += `<li>${unicodeOption.toString()}</li>`;
+            
+    //         } else {
+
+    //             displayChoices += `<li>${selectedOptionArray[i]}</li>`;
+    //         }
+    //     }
+    // }
+
+    for (let j = 0; j < 10; j++) {
+
+        displayAnswers += `<li>${questionArray[j].choices[questionArray[j].answers]}</li>`;
     }
     // [
-        // questionArray[0].choices[questionArray[0].answers],
-        // questionArray[1].choices[questionArray[1].answers],
-        // questionArray[2].choices[questionArray[2].answers],
-        // questionArray[3].choices[questionArray[3].answers],
-        // questionArray[4].choices[questionArray[4].answers],
-        // questionArray[5].choices[questionArray[5].answers],
-        // questionArray[6].choices[questionArray[6].answers],
-        // questionArray[7].choices[questionArray[7].answers],
-        // questionArray[8].choices[questionArray[8].answers],
-        // questionArray[9].choices[questionArray[9].answers]
+    // questionArray[0].choices[questionArray[0].answers],
+    // questionArray[1].choices[questionArray[1].answers],
+    // questionArray[2].choices[questionArray[2].answers],
+    // questionArray[3].choices[questionArray[3].answers],
+    // questionArray[4].choices[questionArray[4].answers],
+    // questionArray[5].choices[questionArray[5].answers],
+    // questionArray[6].choices[questionArray[6].answers],
+    // questionArray[7].choices[questionArray[7].answers],
+    // questionArray[8].choices[questionArray[8].answers],
+    // questionArray[9].choices[questionArray[9].answers]
     // ];
 
     // if ( displayChoices === displayAnswers) {
@@ -297,13 +329,6 @@ function compareResults() {
     resultsContainer.innerHTML = "Here were your choices: " + "<br>" + displayChoices + "<br>" + "<br>" + "Here were the correct answeres: " + "<br>" + displayAnswers.toString() + "<br>" + "<br>" + "You got " + scoreCount + " out of 10 correct.";
 
     questionContainer.replaceWith(resultsContainer);
-
-
-    // Tally how many of the selected answers match the correct answer, and display the user's sore #/10
-
-
-
-
 
     // if (selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
 

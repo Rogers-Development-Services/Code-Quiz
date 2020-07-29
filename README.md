@@ -22,6 +22,8 @@ This application is a work in progress, future updates will include:
 2. Multiple pages for beginning/finishing the game.
 The top 5 player high scores.
 3. Removal of Excessive Text.
+4. Timer will clear immediately after last question is answered.
+5. Inputing initials will appear after completing the quiz and score will be stored and not inputed to local memory.
 
 ## Feedback
 

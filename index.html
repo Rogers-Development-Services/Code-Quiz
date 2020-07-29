@@ -6,12 +6,8 @@
   <meta charset="utf-8">
   <!-- Responsive Design -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
   <!-- Linked Stylesheet -->
   <link rel="stylesheet" href="./Assets/styles/style.css">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <!-- Flavicon -->
   <link rel="icon" type="image/png" href="./Assets/Images/RDS.png">
 
@@ -20,23 +16,16 @@
 
 <body>
   <div class="container">
-    <div id="home" class="flex-center flex-column"></div>
-      <h1>Test your Javascript knowledge!</h1>
+    <div id="quiz" class="flex-center flex-column"></div>
+    <h1>Test your Javascript knowledge!</h1>
 
-    <!-- <a class="btn" href="/game.html">Play</a>
-    <a class="btn" href="/highscores.html">High Scores</a> -->
-    
     <button id="start">Start</button>
- 
-    <div id="question">Here's your question:
+
+    <div id="question">Here's your question, click one of the provided options to answer:
       <h2 id="question-title"></h2>
-      <!-- When there is a static question you can leave it static and overwrite the value. -->
     </div>
 
-
-    <div id="options">Here are your options:
-      <!-- <button id=""></button> -->
-    </div>
+    <div id="options"></div>
 
     <div id="timer">Finish this quiz in two min.</div>
 
@@ -45,6 +34,9 @@
         <div class="input-group">
           <lable for="initials">Record your initials, after receiving your score, by writing your intials here:</lable>
           <input type="text" name="initials" id="initials" placeholder="i.e. MR for Matt Rogers"></input>
+
+          <br>
+          <br>
 
           <lable for="score-count">Record your score, after receiving your score, by writing your intials here:</lable>
           <input type="text" name="score-count" id="score-count" placeholder="i.e. 9/10"></input>
