@@ -1,49 +1,46 @@
-# 04 Web APIs: Code Quiz
+# Code Quiz
 
-As you proceed in your career as a web developer, you will probably be asked to complete a coding assessment, which is typically a combination of multiple-choice questions and interactive challenges. Build a timed code quiz with multiple-choice questions. This app will run in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It will also feature a clean and polished user interface and be responsive, ensuring that it adapts to multiple screen sizes.
+This application will generate a 10 question javascript quiz and store the result from your quiz and compare your score to previous highscores.
 
-## User Story
+Click this link to access the [Deployed Application](https://rogers-development-services.github.io/Code-Quiz/)
 
-```
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
+## Screenshots
 
-## Acceptance Criteria
+Here is an example of our site in action:
 
-```
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
-```
+![alt text](https://raw.githubusercontent.com/Rogers-Development-Services/Password-Generator/master/Assets/images/Deployed%20Application.JPG "Application Img1")
 
-The following animation demonstrates the application functionality:
+## Usage 
 
-![code quiz](./Assets/04-web-apis-homework-demo.gif)
+Click the red "Start" button and respond to the prompted buttons  accordingly to select your answer to each question. Once you've received your score, please input your initials (i.e. MR for Matthew Rogers) and score provided into the two provided forms.
 
-### Review
+## Future Updates
 
-You are required to submit the following for review:
+This application is a work in progress, future updates will include: 
 
-* The URL of the functional, deployed application.
+1. Appropriate styling for the application. 
+2. Multiple pages for beginning/finishing the game.
+The top 5 player high scores.
+3. Removal of Excessive Text.
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+## Feedback
 
-- - -
+Share with us with any comments or questions to help us grow! Navigate to our Contact Us page to send us a message.
+
+## Credits
+
+Code template provided by Trilogy Education 
+
+Thanks to Plover Brown, Steven Jirjis, and Elma Gonzalez for providing guidance.
+
+Guidance for ADA Compliance was verified using [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview)
+
+Application was verified using [Nu Html Checker](https://validator.w3.org/nu/?doc=https%3A%2F%2Frogers-development-services.github.io%2FPassword-Generator%2F) 
+
+Inspiration and some questions were drawn from [Top 85 JavaScript Interview Questions & Answers](https://www.guru99.com/javascript-interview-questions-answers.html)
+
+## License
+
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
 
-
-CREDIT
-
-For Questions about Javascript: https://www.guru99.com/javascript-interview-questions-answers.html
-
-Security Risks using innerHTML: https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML
+Licensed under the [MIT](LICENSE.txt) lincense.
