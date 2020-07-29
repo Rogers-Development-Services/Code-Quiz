@@ -25,6 +25,7 @@ The top 5 player high scores.
 4. Timer will clear immediately after last question is answered.
 5. Inputing initials will appear after completing the quiz and score will be stored and not inputed to local memory.
 6. <br> tags will be removed from HTML.
+7. Excess space between elements will be eliminated.
 
 
 ## Feedback

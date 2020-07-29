@@ -1,12 +1,15 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
 
 div, p {
     margin: 1rem;
+}
+
+#start {
+    max-width: 3rem;
 }
 
 /* Sticky Footer */
