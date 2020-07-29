@@ -12,7 +12,7 @@ Here is an example of our site in action:
 
 ## Usage 
 
-Click the "Start" button and respond to the prompted buttons accordingly to select your answer to each question. Once you've received your score, please input your initials (i.e. MR for Matthew Rogers) and score provided into the two provided forms.
+Click the "Start" button and respond to the prompted buttons accordingly to select your answer to each question. Once you've received your score, please input your initials (i.e. MR for Matthew Rogers) and score provided into the two provided forms. To play again, refresh your current browser window.
 
 ## Future Updates
 
@@ -20,12 +20,12 @@ This application is a work in progress, future updates will include:
 
 1. Appropriate styling for the application will be applied. 
 2. Multiple pages for beginning/finishing the game.
-The top 5 player high scores.
-3. Removal of Excessive Text.
+3. Removal of excessive text.
 4. Timer will clear immediately after last question is answered.
 5. Inputing initials will appear after completing the quiz and score will be stored and not inputed to local memory.
 6. Break tags will be removed from HTML.
 7. Excess space between elements will be eliminated.
+8. The top 5 player high scores will be displayed.
 
 
 ## Feedback

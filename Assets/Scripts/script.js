@@ -5,13 +5,7 @@ const startButton = document.getElementById('start');
 const questionContainer = document.getElementById('question');
 const questionTitle = document.getElementById('question-title');
 const optionContainer = document.getElementById('options');
-// const submitButton = document.getElementById('submit');
 const timerContainer = document.getElementById('timer');
-
-// const initials = document.getElementById("initials");
-// const saveScore = document.getElementById("saveScoreButton");
-// const finalScore = document.getElementById('finalScore');
-// const mostRecentScore = localStorage.getItem("mostRecentScore");
 
 // this counts which question im refrencing in my array
 let counter = 0;
@@ -135,22 +129,8 @@ var questionArray = [
     }
 
 ]
-// var correctOptionIndex = questionArray[counter].choices[questionArray[counter].answers];
-// console.log (correctOptionIndex);
-// console.log(questionArray[counter].choices[questionArray[counter].answers]);
 
 var selectedOptionArray = [];
-// var correctArray = [2, 1, 0, ];
-// correctAnswers = [];
-
-// if (answerArray[i] === correctArray[i]; correctArray++) {
-//     // compare the indexes of each array and tally correct answers
-//     // keep track of correct answers
-//     // let correctAnswer = [];
-//     if (correctArray[i] === correctArray[i] {
-//         correctAnswers++;
-//     }) 
-// }
 
 // GIVEN I am taking a code quiz
 
@@ -158,8 +138,6 @@ var selectedOptionArray = [];
 // WHEN I click the start button
 // THEN a timer starts and am presented with a question
 
-// refrence funcion means name without () vs calling is name with ()
-// Need to make this buton disappear after first click!!!
 startButton.addEventListener('click', initialize);
 
 function initialize() {
@@ -182,11 +160,8 @@ function hideButton() {
 
 var timeElapsed = 0;
 var timeLeft = 120;
-// var timePenalty = timeElapsed + 5;
-// var totalTime = timeLeft - timeElapsed;
 
 function setTime() {
-    // console.log("start button is clicked");
 
     var timerInterval = setInterval(function () {
 
@@ -201,7 +176,6 @@ function setTime() {
 
             clearInterval(timerInterval);
 
-            // timerContainer.textContent = "Times UP!";
             timerContainer.innerHTML = "";
         }
 
@@ -264,83 +238,26 @@ function compareResults() {
 
     for (let j = 0; j < 10; j++) {
         if (j === 3) {
-          if (selectedOptionArray[j] === "<!-- -->") {
-            var unicodeOption = "&lt;&#33;&#45;&#45; &#45;&#45;&gt;";
-            displayChoices += `<li>${unicodeOption.toString()}</li>`;
-          }
+            if (selectedOptionArray[j] === "<!-- -->") {
+                var unicodeOption = "&lt;&#33;&#45;&#45; &#45;&#45;&gt;";
+                displayChoices += `<li>${unicodeOption.toString()}</li>`;
+            }
         } else {
-          displayChoices += `<li>${selectedOptionArray[j]}</li>`;
+            displayChoices += `<li>${selectedOptionArray[j]}</li>`;
         }
-      }
-
-    // for (let i = 0; i < 10; i++) {
-
-    //     if (i == 3) {
-
-    //         if (selectedOptionArray[i] === "<!-- -->") {
-
-    //             var unicodeOption = "&lt;&#33;&#45;&#45; &#45;&#45;&gt;";
-
-    //             displayChoices += `<li>${unicodeOption.toString()}</li>`;
-            
-    //         } else {
-
-    //             displayChoices += `<li>${selectedOptionArray[i]}</li>`;
-    //         }
-    //     }
-    // }
+    }
 
     for (let j = 0; j < 10; j++) {
 
         displayAnswers += `<li>${questionArray[j].choices[questionArray[j].answers]}</li>`;
     }
-    // [
-    // questionArray[0].choices[questionArray[0].answers],
-    // questionArray[1].choices[questionArray[1].answers],
-    // questionArray[2].choices[questionArray[2].answers],
-    // questionArray[3].choices[questionArray[3].answers],
-    // questionArray[4].choices[questionArray[4].answers],
-    // questionArray[5].choices[questionArray[5].answers],
-    // questionArray[6].choices[questionArray[6].answers],
-    // questionArray[7].choices[questionArray[7].answers],
-    // questionArray[8].choices[questionArray[8].answers],
-    // questionArray[9].choices[questionArray[9].answers]
-    // ];
-
-    // if ( displayChoices === displayAnswers) {
-
-    //     scoreCount++
-
-    // }
-
-    // var displayAmount = questionArray[counter].choices.length;
-
-    // for (j = 0; j < displayAmount; j++) {
-
-    //     var jthAmount = document.createElement('ul');
-
-    //     jthOption.innerText = questionArray[counter].choices[answers];
-
-    //     optionContainer.append(ithOption);
-    // }
 
     resultsContainer.setAttribute("id", "results");
 
     resultsContainer.innerHTML = "Here were your choices: " + "<br>" + displayChoices + "<br>" + "<br>" + "Here were the correct answeres: " + "<br>" + displayAnswers.toString() + "<br>" + "<br>" + "You got " + scoreCount + " out of 10 correct.";
 
     questionContainer.replaceWith(resultsContainer);
-
-    // if (selectedOptionArray[counter] !== questionArray[counter].choices[questionArray[counter].answers]) {
-
-    // resultsContainer.setAttribute("id", "results");
-
-    // resultsContainer.innerHTML = "Here are your results:";
-
-    // questionContainer.replaceWith(resultsContainer);
-    // }
 }
-
-// initials.innerText = mostRecentScore;
 
 // # event listeners
 // WHEN I answer a question
@@ -350,13 +267,6 @@ function compareResults() {
 optionContainer.addEventListener('click', function (event) {
 
     selectedOptionArray.push(event.target.innerText);
-    // console.log(event.target.innerText);
-    // console.log(selectedOptionArray);
-    // console.log(questionArray[counter].choices[questionArray[counter].answers]);
-
-    // this doesn't work...
-    // var chosenOption = selectedOptionArray[counter];
-    // console.log(chosenOption);
 
     // WHEN I answer a question incorrectly
     // THEN time is subtracted from the clock
@@ -374,7 +284,6 @@ optionContainer.addEventListener('click', function (event) {
     counter++;
 
     console.log(selectedOptionArray);
-    // console.log(questionArray[0].choices[questionArray[0].answers]);
 
     optionContainer.innerHTML = "";
 
@@ -389,65 +298,49 @@ optionContainer.addEventListener('click', function (event) {
 renderLastScore();
 
 function displayMessage(type, message) {
+
     msgDiv.textContent = message;
+
     msgDiv.setAttribute("class", type);
+
 }
 
 function renderLastScore() {
+
     var initals = localStorage.getItem("initials");
+
     var score = localStorage.getItem("score-count");
 
     if (!initals) {
+
         return;
     }
 
     userInitalsSpan.textContent = initals;
+
     userScoreSpan.textContent = score;
 }
 
 submitBtn.addEventListener('click', function (event) {
+
     event.preventDefault();
 
     var initials = document.querySelector('#initials').value;
+
     var score = document.querySelector("#score-count").value;
 
     if (initials === "") {
+
         displayMessage("error", "Initials can't be blank");
+
     } else {
+
         displayMessage("Sucess", "Score recorded");
 
         localStorage.setItem("initials", initials);
+
         localStorage.setItem("score-count", score);
+
         renderLastScore();
     }
 })
-
-
-
-// # event listeners + modifying remanining time
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-
-    // var correctOption = questionArray[counter].choices[answers];
-
-    // var chosenOption = selectedOptionArray[counter];
-    // console.log(chosenOption);
-    // console.log(questionArray[counter].choices[questionArray[counter].answers]);
-
-    // var selectedOption = optionContainer.addEventListener('click', function (event) {
-
-    // if ( selectedOption !== correctOption ) {
-    //     // subtract 5s from the timer
-    //     setTime(-5);
-    //     }
-    // });
-
-
-
-
-
-    // create a trigger once first quesions is answered which prompts the next question by event handler 'click', once i click on the choice i want to creat counter ++, this way it ques the next question.
-    // generate all the questions and choices
-    // click handler brings you to the next question. 
-    // array for whichever choice they choose and then check the answer later
-    // Hide and then display the second in CSS once different buttons are clicked
