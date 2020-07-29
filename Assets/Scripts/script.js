@@ -237,19 +237,25 @@ function compareResults() {
     var displayAnswers = "";
 
     for (let j = 0; j < 10; j++) {
+
         if (j === 3) {
+
             if (selectedOptionArray[j] === "<!-- -->") {
+
                 var unicodeOption = "&lt;&#33;&#45;&#45; &#45;&#45;&gt;";
-                displayChoices += `<li>${unicodeOption.toString()}</li>`;
+
+                displayChoices += `<ul><li>${unicodeOption.toString()}</li></ul>`;
             }
+
         } else {
-            displayChoices += `<li>${selectedOptionArray[j]}</li>`;
+
+            displayChoices += `<ul><li>${selectedOptionArray[j]}</li></ul>`;
         }
     }
 
     for (let j = 0; j < 10; j++) {
 
-        displayAnswers += `<li>${questionArray[j].choices[questionArray[j].answers]}</li>`;
+        displayAnswers += `<ul><li>${questionArray[j].choices[questionArray[j].answers]}</li></ul>`;
     }
 
     resultsContainer.setAttribute("id", "results");
